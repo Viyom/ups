@@ -140,33 +140,34 @@ and how the interface is used to interact with the socket itself.
 
 These callbacks are called by the UDP socket to notify the application of
 interesting events. We will refer to these with the protected name used in
-socket.h, but we will provide the API function to set the pointers to these
+``socket.h``, but we will provide the API function to set the pointers to these
 callback as well.
 
 *NotifyConnectionSucceeded*: *SetConnectCallback*, 1st argument
-  Called when the *Connect()* succeeds and the connection is established.
+  Called when the ``Connect()`` succeeds and the remote address is validated.
 
 *NotifyConnectionFailed*: *SetConnectCallback*, 2nd argument
-  Called in *Connect()* when the connection establishment fails.
+  Called in ``Connect()`` when the the remote address validation fails.
 
 *NotifyDataSent*: *SetDataSentCallback*
-  The Socket notifies the application that some bytes has been transmitted on
-  the IP level. These bytes could still be lost in the node (traffic control
+  The socket notifies the application that some bytes have been transmitted at
+  the IP layer. These bytes could still be lost in the node (traffic control
   layer) or in the network.
 
 *NotifySend*: *SetSendCallback*
-  Invoked to get the space available in the tx buffer when a packet (that can
-  carry data) is sent.
+  Invoked to get the space available in the tx buffer when a packet (that carries
+  data) is sent.
 
 *NotifyDataRecv*: *SetRecvCallback*
-  Called when the socket receive a packet (that can carry data) in the receiver
+  Called when the socket receives a packet (that carries data) in the receiver
   buffer.
 
 
 Validation
 ++++++++++
 
-The following test cases are found in the ``src/internet/test/udp-test.cc`` file.
+The following test cases have been provided for UDP implementation in the
+``src/internet/test/udp-test.cc`` file.
 
 * **UdpSocketImplTest:** Checks data received via UDP Socket over IPv4.
 * **UdpSocketLoopbackTest:** Checks data received via UDP Socket Loopback over IPv4.
@@ -176,7 +177,6 @@ The following test cases are found in the ``src/internet/test/udp-test.cc`` file
 
 Limitations
 +++++++++++
-
 
 * UDP_CORK, MSG_DONTROUTE, path MTU discovery control (e.g. IP_MTU_DISCOVER)
   are not presently part of this implementation.
