@@ -45,28 +45,26 @@ Usage
 In many cases, usage of UDP is set at the application layer by telling
 the |ns3| application which kind of socket factory to use.
 
-Using the helper functions defined in ``src/applications/helper``, here is how
-one would create a UDP receiver::
+Using the helper functions defined in ``src/applications/helper`` and
+``src/network/helper``, here is how one would create a UDP receiver::
 
-  uint16_t port = 9;  // well-known echo port number
-  UdpEchoServerHelper server (port);
-  ApplicationContainer apps = server.Install (n.Get (1));
-  apps.Start (Seconds (1.0));
-  apps.Stop (Seconds (10.0));
+  // Create a packet sink on the star "hub" to receive these packets
+  uint16_t port = 50000;
+  Address sinkLocalAddress(InetSocketAddress (Ipv4Address::GetAny (), port));
+  PacketSinkHelper sinkHelper ("ns3::UdpSocketFactory", sinkLocalAddress);
+  ApplicationContainer sinkApp = sinkHelper.Install (serverNode);
+  sinkApp.Start (Seconds (1.0));
+  sinkApp.Stop (Seconds (10.0));
 
-Similarly, the below snippet configures a UdpEchoClient application to send UDP
-datagrams ::
+Similarly, the below snippet configures OnOffApplication traffic source to use
+UDP::
 
-  uint32_t packetSize = 1024;
-  uint32_t maxPacketCount = 1;
-  Time interPacketInterval = Seconds (1.);
-  UdpEchoClientHelper client (serverAddress, port);
-  client.SetAttribute ("MaxPackets", UintegerValue (maxPacketCount));
-  client.SetAttribute ("Interval", TimeValue (interPacketInterval));
-  client.SetAttribute ("PacketSize", UintegerValue (packetSize));
-  apps = client.Install (n.Get (0));
-  apps.Start (Seconds (2.0));
-  apps.Stop (Seconds (10.0));
+  // Create the OnOff applications to send UDP to the server
+  OnOffHelper clientHelper ("ns3::UdpSocketFactory", Address ());
+  clientHelper.SetAttribute ("Remote", remoteAddress);
+  ApplicationContainer clientApps = (clientHelper.Install (clientNode);
+  clientApps.Start (Seconds (1.0));
+  clientApps.Stop (Seconds (10.0));
 
 For users who wish to have a pointer to the actual socket (so that
 socket operations like Bind(), setting socket options, etc. can be
