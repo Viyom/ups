@@ -245,10 +245,8 @@ Limitations
 +++++++++++
 
 
-1. UDP_CORK, MSG_DONTROUTE, path MTU discovery control (e.g. IP_MTU_DISCOVER)
-are not presently part of this implementation.
-2. MTU handling is also weak in ns-3 for the moment; it is best to send
-datagrams that do not exceed 1500 byte MTU (e.g. 1472 byte UDP datagrams).
-3. Not all socket API callbacks are supported.
-
-For more information, see `this wiki page <http://www.nsnam.org/wiki/Network_Simulation_Cradle_Integration>`_.
+* UDP_CORK, MSG_DONTROUTE, path MTU discovery control (e.g. IP_MTU_DISCOVER)
+  are not presently part of this implementation.
+* MTU handling is also weak in ns-3 for the moment; it is best to send
+  datagrams that do not exceed 1500 byte MTU (e.g. 1472 byte UDP datagrams).
+* Not all socket API callbacks are supported.
