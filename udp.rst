@@ -170,9 +170,7 @@ Validation
 The following test cases are found in the ``src/internet/test/udp-test.cc`` file.
 
 1. **UdpSocketImplTest:**
-UDP Socket over IPv4 Test.UDP Socket over IPv4 Test.
-174
-
+UDP Socket over IPv4 Test.
 
 2. **UdpSocketLoopbackTest:**
 UDP Socket Loopback over IPv4 Test.
