@@ -169,17 +169,10 @@ Validation
 
 The following test cases are found in the ``src/internet/test/udp-test.cc`` file.
 
-1. **UdpSocketImplTest:**
-UDP Socket over IPv4 Test.
-
-2. **UdpSocketLoopbackTest:**
-UDP Socket Loopback over IPv4 Test.
-
-3.   **Udp6SocketImplTest :**
-UDP Socket over IPv6 Test.
-
-4. **Udp6SocketLoopbackTest :**
-UDP Socket Loopback over IPv6 Test.
+* **UdpSocketImplTest:** Checks data received via UDP Socket over IPv4.
+* **UdpSocketLoopbackTest:** Checks data received via UDP Socket Loopback over IPv4.
+* **Udp6SocketImplTest :** Checks data received via UDP Socket over IPv6.
+* **Udp6SocketLoopbackTest :** Checks data received via UDP Socket Loopback over IPv6 Test.
 
 
 Limitations
