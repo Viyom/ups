@@ -48,7 +48,7 @@ the |ns3| application which kind of socket factory to use.
 Using the helper functions defined in ``src/applications/helper`` and
 ``src/network/helper``, here is how one would create a UDP receiver::
 
-  // Create a packet sink on the star "hub" to receive these packets
+  // Create a packet sink on the receiver
   uint16_t port = 50000;
   Address sinkLocalAddress(InetSocketAddress (Ipv4Address::GetAny (), port));
   PacketSinkHelper sinkHelper ("ns3::UdpSocketFactory", sinkLocalAddress);
