@@ -11,7 +11,7 @@ Generic support for UDP
 
 |ns3| supports a native implementation of UDP. It provides a connectionless,
 unreliable datagram packet service. Packets may be reordered or duplicated before
-they arrive. UDP generates and checks checksums to catch transmission errors.
+they arrive. UDP calculates and checks checksums to catch transmission errors.
 
 This implementation inherits from a few common header classes in the ``src/network``
 directory, so that user code can swap out implementations with minimal changes to
@@ -21,8 +21,8 @@ Here are the important abstract base classes:
 
 * class :cpp:class:`UdpSocket`: This is defined in:
   ``src/internet/model/udp-socket.{cc,h}``
-  This is an abstract base class of all UdpSockets. This class exists solely for
-  hosting UdpSocket attributes that can be reused across different implementations,
+  This is an abstract base class of all UDP sockets. This class exists solely for
+  hosting ``UdpSocket`` attributes that can be reused across different implementations,
   and for declaring UDP-specific multicast API.
 
 * class :cpp:class:`UdpSocketFactory`: This is used by the layer-4 protocol
